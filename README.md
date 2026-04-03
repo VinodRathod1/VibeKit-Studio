@@ -2,6 +2,8 @@
 
 A premium, full-stack platform for creating and publishing themed mini-sites. Build your vibe, launch in minutes, and track your success.
 
+**🌍 Live Demo:** [https://splendorous-creponne-6e93e6.netlify.app/](https://splendorous-creponne-6e93e6.netlify.app/)
+
 ## 🚀 Features
 - **6 Premium Theme Presets**: Minimal / Editorial, Neo-brutal, Dark / Neon, Pastel / Soft, Luxury / Serif, Retro / Pixel.
 - **Interactive Page Builder**: Real-time split-layout editor with auto-save and multi-device preview.
