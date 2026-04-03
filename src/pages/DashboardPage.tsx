@@ -8,8 +8,7 @@ import {
   CopyIcon, 
   EditIcon, 
   PlusIcon,
-  LogOutIcon,
-  FileTextIcon
+  LogOutIcon
 } from '../components/icons';
 
 const DashboardPage = () => {
