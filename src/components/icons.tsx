@@ -8,7 +8,13 @@ import {
   Smartphone, 
   Link, 
   BarChart3,
-  ArrowRight
+  ArrowRight,
+  Trash2,
+  Copy,
+  Edit2,
+  Plus,
+  LogOut,
+  FileText
 } from 'lucide-react';
 
 export const LightningBoltIcon = Zap;
@@ -21,3 +27,9 @@ export const MobileIcon = Smartphone;
 export const SlugIcon = Link;
 export const AnalyticsIcon = BarChart3;
 export const ArrowRightIcon = ArrowRight;
+export const TrashIcon = Trash2;
+export const CopyIcon = Copy;
+export const EditIcon = Edit2;
+export const PlusIcon = Plus;
+export const LogOutIcon = LogOut;
+export const FileTextIcon = FileText;

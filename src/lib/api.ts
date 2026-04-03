@@ -29,4 +29,16 @@ export const api = {
   
   getMe: () => 
     request('auth-me', { method: 'GET' }),
+
+  getPages: () => 
+    request('pages', { method: 'GET' }),
+
+  createPage: (title: string, theme: string) => 
+    request('pages', { method: 'POST', body: JSON.stringify({ title, theme }) }),
+
+  duplicatePage: (id: string) => 
+    request('pages-duplicate', { method: 'POST', body: JSON.stringify({ id }) }),
+
+  deletePage: (id: string) => 
+    request('pages', { method: 'DELETE', body: JSON.stringify({ id }) }),
 };
