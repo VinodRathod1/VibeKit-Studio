@@ -1,40 +1,34 @@
-import { useTheme } from '../themes/ThemeProvider';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import Hero from '../components/sections/Hero';
+import HowItWorks from '../components/sections/HowItWorks';
+import ThemeShowcase from '../components/sections/ThemeShowcase';
+import Features from '../components/sections/Features';
+import CTABanner from '../components/sections/CTABanner';
 import ThemePicker from '../components/ThemePicker';
 
 const LandingPage = () => {
-  const { theme } = useTheme();
-
   return (
-    <div className="min-h-screen py-20 px-6">
-      <div className="max-w-4xl mx-auto text-center mb-16">
-        <h1 className="text-6xl font-bold tracking-tighter mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-          Create with Vibe
-        </h1>
-        <p className="text-xl opacity-80" style={{ fontFamily: 'var(--font-body)' }}>
-          Select a theme below to see the entire app transform instantly.
-        </p>
-      </div>
+    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--color-accent)] selection:text-[var(--color-bg)] transition-colors duration-300">
+      <Navbar />
+      
+      <main>
+        <Hero />
+        
+        <div className="py-12 bg-[var(--color-accent)]/5 border-y border-[var(--color-accent)]/10">
+          <ThemePicker />
+          <p className="text-center text-xs mt-4 opacity-50 uppercase tracking-widest font-bold">
+            Live Preview: Switch the theme to see the entire landing page transform.
+          </p>
+        </div>
 
-      <ThemePicker />
+        <HowItWorks />
+        <ThemeShowcase />
+        <Features />
+        <CTABanner />
+      </main>
 
-      <div className="mt-20 max-w-md mx-auto p-8 rounded-[var(--radius)] bg-[var(--color-surface)] border border-[var(--color-accent)]/20 shadow-xl">
-        <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-          Preview Card
-        </h3>
-        <p className="opacity-70 mb-6" style={{ fontFamily: 'var(--font-body)' }}>
-          This card demonstrates how border radius, background colors, and typography adapt to your selected vibe.
-        </p>
-        <button className="w-full py-3 px-6 rounded-[var(--radius)] font-bold transition-all"
-          style={{ 
-            backgroundColor: theme.buttonStyle === 'outline' ? 'transparent' : 'var(--color-accent)', 
-            color: theme.buttonStyle === 'outline' ? 'var(--color-accent)' : 'var(--color-bg)',
-            fontFamily: 'var(--font-heading)',
-            boxShadow: theme.buttonStyle === 'glow' ? '0 0 20px var(--color-accent)' : 'none',
-            border: theme.buttonStyle === 'outline' ? '2px solid var(--color-accent)' : 'none'
-          }}>
-          Get Started
-        </button>
-      </div>
+      <Footer />
     </div>
   );
 };
