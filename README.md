@@ -48,10 +48,11 @@ For quick testing, use:
 - **Security**: JWT (httpOnly Cookies) & Bcrypt password hashing.
 
 ## ⚖️ Tradeoffs & Improvements
-- **JSONB Content**: Uses `jsonb` for page sections for maximum flexibility. *Next Step:* Normalize into a `sections` table for advanced querying.
-- **Stateless Auth**: JWTs in cookies for easy scaling. *Next Step:* Add refresh tokens and device-specific revocation.
-- **Auto-save**: 1.5s debounced persistence. *Next Step:* Add operational transform (OT) or conflict resolution for multi-tab editing.
-- **Media**: Currently uses URL strings. *Next Step:* Integrate Cloudflare R2 for direct image uploads.
+- **JSONB Content**: Uses `jsonb` for page sections for maximum flexibility. *Next Step:* Normalize into a `sections` table for advanced querying and cross-section reporting.
+- **Stateless Auth**: JWTs in cookies for easy scaling. *Next Step:* Add refresh tokens and device-specific session revocation for enhanced security.
+- **Auto-save**: 1.5s debounced persistence. *Next Step:* Add operational transform (OT) or conflict resolution for multi-device editing sessions.
+- **Media**: Currently uses URL strings. *Next Step:* Integrate Cloudflare R2 or AWS S3 for direct high-performance image uploads and resizing.
+- **Data Integrity**: Uses CASCADE deletes for simplicity. *Next Step:* Implement "Soft Deletes" (deleted_at) to allow users to recover accidentally deleted vibes.
 
 ---
 Built with ⚡ by VibeKit Team
