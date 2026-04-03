@@ -9,16 +9,19 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+export const ThemeProvider = ({ children, theme: themeProp }: { children: ReactNode; theme?: string }) => {
   const [themeName, setThemeName] = useState(() => {
     return localStorage.getItem('vibekit-theme') || 'minimal';
   });
 
-  const theme = themes[themeName] || themes.minimal;
+  const activeThemeName = themeProp || themeName;
+  const theme = themes[activeThemeName] || themes.minimal;
 
   useEffect(() => {
-    localStorage.setItem('vibekit-theme', themeName);
-  }, [themeName]);
+    if (!themeProp) {
+      localStorage.setItem('vibekit-theme', themeName);
+    }
+  }, [themeName, themeProp]);
 
   const cssVariables = {
     '--color-bg': theme.colors.bg,
@@ -34,15 +37,17 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, themeName, setTheme: setThemeName }}>
-      <div style={{ 
-        ...cssVariables, 
-        backgroundColor: 'var(--color-bg)', 
-        color: 'var(--color-text)',
-        fontFamily: 'var(--font-body)',
-        minHeight: '100vh',
-        transition: 'all 0.3s ease'
-      }}>
-        <div style={{ fontFamily: 'var(--font-heading)' }}>
+      <div 
+        className="theme-wrapper"
+        style={{ 
+          ...cssVariables, 
+          backgroundColor: 'var(--color-bg)', 
+          color: 'var(--color-text)',
+          fontFamily: 'var(--font-body)',
+          minHeight: '100%',
+          transition: 'all 0.3s ease'
+        }}>
+        <div style={{ fontFamily: 'var(--font-heading)' }} className="h-full">
           {children}
         </div>
       </div>

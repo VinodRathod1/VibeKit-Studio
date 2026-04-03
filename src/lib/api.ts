@@ -41,4 +41,16 @@ export const api = {
 
   deletePage: (id: string) => 
     request('pages', { method: 'DELETE', body: JSON.stringify({ id }) }),
+
+  getPage: (id: string) => 
+    request(`page?id=${id}`, { method: 'GET' }),
+
+  updatePage: (id: string, data: any) => 
+    request('page', { method: 'PUT', body: JSON.stringify({ id, ...data }) }),
+
+  publishPage: (id: string) => 
+    request('page-publish', { method: 'POST', body: JSON.stringify({ id }) }),
+
+  unpublishPage: (id: string) => 
+    request('page-unpublish', { method: 'POST', body: JSON.stringify({ id }) }),
 };
