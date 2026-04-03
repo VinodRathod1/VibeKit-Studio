@@ -3,7 +3,7 @@
 A premium, full-stack platform for creating and publishing themed mini-sites. Build your vibe, launch in minutes, and track your success.
 
 ## 🚀 Features
-- **6 Premium Theme Presets**: Minimal, Neo Brutal, Glassmorphism, Midnight, Kawaii, and Corporate.
+- **6 Premium Theme Presets**: Minimal / Editorial, Neo-brutal, Dark / Neon, Pastel / Soft, Luxury / Serif, Retro / Pixel.
 - **Interactive Page Builder**: Real-time split-layout editor with auto-save and multi-device preview.
 - **Section Library**: Hero, Features, Gallery, and Contact blocks.
 - **Public Rendering**: SEO-friendly /p/:slug pages with dynamic theme injection.
@@ -36,13 +36,11 @@ A premium, full-stack platform for creating and publishing themed mini-sites. Bu
    npx netlify dev
    ```
 
-## 🔐 Test Credentials
-For quick testing, use:
-- **Email**: `test@vibekit.com`
-- **Password**: `testpass123`
+## 🔐 Authentication
+Please sign up to create a new account and begin building your vibes.
 
 ## 🏗️ Technical Stack
-- **Frontend**: React 19, Vite, Tailwind CSS 4, Framer Motion (for entrance animations).
+- **Frontend**: React 19, Vite, Tailwind CSS 4.
 - **Backend**: Netlify Functions (Serverless Node.js).
 - **Database**: PostgreSQL (Supabase/Neon).
 - **Security**: JWT (httpOnly Cookies) & Bcrypt password hashing.
