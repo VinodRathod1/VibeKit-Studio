@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@netlify/functions": "^5.1.5",
     "@tailwindcss/vite": "^4.2.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie": "^0.6.0",
