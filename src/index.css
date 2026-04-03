@@ -28,7 +28,7 @@
   }
 
   input, textarea, select {
-    @apply transition-all duration-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 outline-none;
+    @apply transition-all duration-300 focus:ring-2 focus:ring-[var(--color-accent)] outline-none;
   }
 }
 
