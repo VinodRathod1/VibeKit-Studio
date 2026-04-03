@@ -22,10 +22,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         {data.buttonText && (
           <a 
             href={data.buttonUrl || '#'}
-            className={`inline-block px-10 py-5 rounded-[var(--radius)] font-bold text-lg transition-all transform hover:scale-105 active:scale-95
-              ${process.env.VITE_BTN_STYLE === 'glow' ? 'shadow-[0_0_20px_var(--color-accent)]' : ''}
-              ${process.env.VITE_BTN_STYLE === 'outline' ? 'border-2 border-[var(--color-accent)] text-[var(--color-accent)]' : 'bg-[var(--color-accent)] text-white'}
-              hover:opacity-90`}
+            className="inline-block px-10 py-5 rounded-[var(--radius)] font-bold text-lg bg-[var(--color-accent)] text-[var(--color-bg)] border-2 border-[var(--color-accent)] hover:opacity-90 transition-all transform hover:scale-105 active:scale-95"
           >
             {data.buttonText}
           </a>
