@@ -38,7 +38,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-full max-w-5xl h-64 bg-gradient-to-t from-[var(--color-bg)] to-transparent z-20"></div>
+      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-full max-w-5xl h-64 bg-gradient-to-t from-[var(--color-bg)] to-transparent z-20 pointer-events-none"></div>
     </section>
   );
 };
