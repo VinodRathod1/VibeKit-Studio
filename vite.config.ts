@@ -8,6 +8,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
+    host: true,
     proxy: {
       '/.netlify/functions': {
         target: 'http://localhost:8888',

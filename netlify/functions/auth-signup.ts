@@ -59,9 +59,11 @@ export const handler: Handler = async (event) => {
       body: JSON.stringify({ user: { id: user.id, email: user.email } })
     };
   } catch (error) {
+    console.error(error);
     return { 
       statusCode: 500, 
-      body: JSON.stringify({ error: 'Internal Server Error' }) 
+      headers: { 'Content-Type': 'application/json' } as Record<string, string>,
+      body: JSON.stringify({ error: 'Database connection failed. Please check Netlify environment variables.' }) 
     };
   }
 };
