@@ -56,4 +56,10 @@ export const api = {
 
   getPublicPage: (slug: string) => 
     request(`public-page?slug=${slug}`, { method: 'GET' }),
+
+  incrementViewCount: (id: string) => 
+    request('public-page-view', { method: 'POST', body: JSON.stringify({ id }) }),
+
+  submitContact: (data: any) => 
+    request('public-contact', { method: 'POST', body: JSON.stringify(data) }),
 };

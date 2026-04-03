@@ -3,7 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { api } from '../lib/api';
 import { ThemeProvider } from '../themes/ThemeProvider';
 import { themes } from '../themes/index';
-import PreviewSection from '../components/preview/PreviewSection';
+import HeroSection from '../components/sections/HeroSection';
+import FeaturesSection from '../components/sections/FeaturesSection';
+import GallerySection from '../components/sections/GallerySection';
+import ContactSection from '../components/sections/ContactSection';
 import SectionEditor from '../components/editor/SectionEditor';
 import { 
   ArrowLeft, 
@@ -270,9 +273,15 @@ const EditorPage = () => {
                     No sections added yet...
                   </div>
                 ) : (
-                  sections.sort((a, b) => a.order - b.order).map((s) => (
-                    <PreviewSection key={s.id} type={s.type} data={s.data} />
-                  ))
+                  sections.sort((a, b) => a.order - b.order).map((s) => {
+                    switch (s.type) {
+                      case 'hero': return <HeroSection key={s.id} data={s.data} />;
+                      case 'features': return <FeaturesSection key={s.id} data={s.data} />;
+                      case 'gallery': return <GallerySection key={s.id} data={s.data} />;
+                      case 'contact': return <ContactSection key={s.id} pageId={page.id} data={s.data} />;
+                      default: return null;
+                    }
+                  })
                 )}
               </div>
             </ThemeProvider>
