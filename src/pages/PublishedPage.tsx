@@ -38,18 +38,22 @@ const PublishedPage = () => {
     return (
       <div className="min-h-screen bg-white">
         {/* Skeleton UI */}
-        <div className="h-[70vh] bg-gray-50 flex flex-col items-center justify-center space-y-6">
-          <div className="w-1/2 h-16 bg-gray-200 animate-pulse rounded-full"></div>
-          <div className="w-1/3 h-8 bg-gray-200 animate-pulse rounded-full"></div>
-          <div className="w-32 h-14 bg-gray-200 animate-pulse rounded-full"></div>
+        <div className="h-[70vh] bg-gray-50 flex flex-col items-center justify-center space-y-8 relative overflow-hidden">
+          <div className="absolute inset-0 animate-shimmer"></div>
+          <div className="w-2/3 h-20 bg-gray-200 rounded-full blur-sm"></div>
+          <div className="w-1/2 h-8 bg-gray-200 rounded-full blur-sm opacity-50"></div>
+          <div className="w-40 h-16 bg-gray-200 rounded-2xl blur-sm opacity-30"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-3 gap-12">
           {[1, 2, 3].map(i => (
-            <div key={i} className="h-64 bg-gray-50 animate-pulse rounded-3xl"></div>
+            <div key={i} className="h-80 bg-gray-50 rounded-[3rem] relative overflow-hidden">
+               <div className="absolute inset-0 animate-shimmer"></div>
+            </div>
           ))}
         </div>
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2">
-          <Loader2 className="animate-spin text-gray-300" size={32} />
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3 px-6 py-3 bg-white/50 backdrop-blur-xl border border-gray-100 rounded-full shadow-2xl">
+          <Loader2 className="animate-spin text-gray-400" size={20} />
+          <span className="text-[10px] font-black uppercase tracking-widest opacity-40">Loading Vibe...</span>
         </div>
       </div>
     );
@@ -57,19 +61,19 @@ const PublishedPage = () => {
 
   if (error || !page) {
     return (
-      <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-50 p-6 text-center">
-        <div className="w-20 h-20 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-8">
-          <AlertCircle size={40} />
+      <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-50 p-6 text-center animate-in fade-in duration-1000">
+        <div className="w-32 h-32 bg-white rounded-[2rem] shadow-2xl flex items-center justify-center mb-10 rotate-3 hover:rotate-0 transition-transform duration-500 group">
+          <AlertCircle size={48} className="text-red-500 group-hover:scale-110 transition-transform" />
         </div>
-        <h1 className="text-3xl font-black text-gray-900 mb-3" style={{ fontFamily: 'var(--font-heading)' }}>Vibe Not Found</h1>
-        <p className="text-gray-500 mb-10 max-w-sm mx-auto font-medium">
-          The page you are looking for doesn't exist or is currently in draft mode.
+        <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-4 tracking-tighter" style={{ fontFamily: 'var(--font-heading)' }}>Vibe Not Found</h1>
+        <p className="text-gray-500 mb-12 max-w-sm mx-auto font-medium text-lg leading-relaxed">
+          The vibe you are looking for doesn't exist or has returned to the digital ether.
         </p>
         <Link 
           to="/" 
-          className="px-8 py-4 bg-black text-white rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform flex items-center gap-3"
+          className="px-10 py-5 bg-black text-white rounded-2xl font-black uppercase tracking-widest hover:scale-110 active:scale-95 transition-all shadow-2xl shadow-black/20 flex items-center gap-3"
         >
-          <ArrowLeft size={20} /> Back to Home
+          <ArrowLeft size={20} /> Back to Studio
         </Link>
       </div>
     );

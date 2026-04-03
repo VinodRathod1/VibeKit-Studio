@@ -106,8 +106,31 @@ const EditorPage = () => {
 
   if (loading) {
     return (
-      <div className="h-screen w-full flex items-center justify-center bg-gray-50">
-        <Loader2 className="animate-spin text-gray-400" size={32} />
+      <div className="h-screen w-full flex flex-col bg-white overflow-hidden">
+        <header className="h-16 border-b animate-pulse bg-gray-50 flex items-center px-6">
+          <div className="w-40 h-8 bg-gray-100 rounded-full"></div>
+        </header>
+        <div className="flex-1 flex overflow-hidden">
+          <aside className="w-[400px] border-r p-8 space-y-10 overflow-y-auto">
+            <div className="space-y-4">
+              <div className="h-10 bg-gray-50 rounded-xl animate-pulse"></div>
+              <div className="h-4 bg-gray-50 rounded-full animate-pulse w-1/2"></div>
+            </div>
+            <div className="space-y-6">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="h-48 bg-gray-50 rounded-3xl animate-pulse flex items-center justify-center">
+                  <div className="w-12 h-12 bg-white rounded-full opacity-50"></div>
+                </div>
+              ))}
+            </div>
+          </aside>
+          <main className="flex-1 bg-gray-50 flex items-center justify-center relative">
+            <div className="w-[80%] aspect-video bg-white shadow-2xl rounded-[3rem] animate-pulse"></div>
+            <div className="absolute font-black uppercase tracking-widest text-xs opacity-20 animate-bounce">
+              Entering the Vibe...
+            </div>
+          </main>
+        </div>
       </div>
     );
   }
@@ -130,11 +153,15 @@ const EditorPage = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 text-xs text-gray-400 mr-4">
+          <div className="flex items-center gap-2 text-xs mr-4 transition-all duration-700">
             {saving ? (
-              <span className="flex items-center gap-1"><Loader2 size={12} className="animate-spin" /> Saving...</span>
+              <span className="flex items-center gap-1.5 text-[var(--color-accent)] opacity-40 font-black uppercase tracking-widest animate-pulse">
+                <Loader2 size={12} className="animate-spin" /> saving...
+              </span>
             ) : lastSaved ? (
-              <span className="flex items-center gap-1 text-green-600 font-medium"><CheckCircle size={12} /> Saved</span>
+              <span className="flex items-center gap-1.5 text-green-500 font-black uppercase tracking-widest animate-in fade-in zoom-in duration-500">
+                <CheckCircle size={12} /> saved
+              </span>
             ) : null}
           </div>
 

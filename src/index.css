@@ -1,1 +1,74 @@
 @import "tailwindcss";
+
+/* VibeKit Design Tokens */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f9f9fb;
+  --color-text: #0a0a0a;
+  --color-accent: #000000;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius: 1rem;
+  --spacing-unit: 1rem;
+}
+
+/* Base Interactions */
+@layer base {
+  body {
+    @apply bg-[var(--color-bg)] text-[var(--color-text)] font-[var(--font-body)];
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-[var(--font-heading)];
+  }
+
+  button, a {
+    @apply transition-all duration-300 active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 outline-none;
+  }
+
+  input, textarea, select {
+    @apply transition-all duration-300 focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-opacity-20 outline-none;
+  }
+}
+
+/* Premium Animations */
+@layer utilities {
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+  }
+
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-delay-1 { animation-delay: 100ms; }
+  .stagger-delay-2 { animation-delay: 200ms; }
+  .stagger-delay-3 { animation-delay: 300ms; }
+  .stagger-delay-4 { animation-delay: 400ms; }
+
+  .hover-raise {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+}

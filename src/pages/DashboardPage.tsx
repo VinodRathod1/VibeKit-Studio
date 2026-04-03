@@ -73,36 +73,46 @@ const DashboardPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--color-bg)]">
-        <div className="w-12 h-12 border-4 border-[var(--color-accent)] border-t-transparent rounded-full animate-spin"></div>
+      <div className="min-h-screen bg-[var(--color-bg)]">
+        <header className="h-16 border-b border-[var(--color-accent)]/10 animate-pulse bg-gray-50"></header>
+        <main className="max-w-7xl mx-auto px-6 py-12">
+          <div className="h-10 w-48 bg-gray-100 rounded-full mb-12 animate-pulse"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="h-64 bg-gray-50 rounded-[var(--radius)] border border-gray-100 relative overflow-hidden">
+                <div className="absolute inset-0 animate-shimmer"></div>
+              </div>
+            ))}
+          </div>
+        </main>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] pb-20">
+    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] pb-20 fade-up">
       {/* Header */}
       <header className="sticky top-0 z-30 bg-[var(--color-bg)]/80 backdrop-blur-md border-b border-[var(--color-accent)]/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[var(--color-accent)] rounded-lg flex items-center justify-center text-[var(--color-bg)]">
+            <div className="w-10 h-10 bg-[var(--color-accent)] rounded-lg flex items-center justify-center text-[var(--color-bg)] hover:rotate-12 transition-transform duration-500">
               <LightningBoltIcon size={24} />
             </div>
-            <h1 className="text-2xl font-black tracking-tight hidden sm:block">My Pages</h1>
+            <h1 className="text-2xl font-black tracking-tight hidden sm:block font-[var(--font-heading)]">VibeKit Studio</h1>
           </div>
 
           <div className="flex items-center gap-6">
             <span className="text-sm font-medium opacity-50 hidden md:block">{user?.email}</span>
             <button 
               onClick={handleLogout}
-              className="p-2 hover:bg-[var(--color-accent)]/10 rounded-lg transition-colors text-[var(--color-accent)]"
+              className="p-2 hover:bg-red-500/10 rounded-lg transition-colors text-red-500"
               title="Logout"
             >
               <LogOutIcon size={20} />
             </button>
             <button 
               onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-bg)] font-bold rounded-[var(--radius)] hover:opacity-90 transition-opacity"
+              className="flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-[var(--color-bg)] font-black rounded-[var(--radius)] hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[var(--color-accent)]/10"
             >
               <PlusIcon size={18} />
               <span className="hidden sm:inline">New Page</span>
@@ -112,64 +122,70 @@ const DashboardPage = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-12">
+        <h2 className="text-4xl font-black mb-12" style={{ fontFamily: 'var(--font-heading)' }}>Dashboard</h2>
+        
         {pages.length === 0 ? (
-          <div className="text-center py-32 flex flex-col items-center">
-            <div className="w-24 h-24 bg-[var(--color-accent)]/5 rounded-full flex items-center justify-center mb-8">
-              <FileTextIcon size={48} className="text-[var(--color-accent)]/20" />
+          <div className="text-center py-24 flex flex-col items-center bg-[var(--color-surface)] rounded-[3rem] border-2 border-dashed border-gray-200 fade-up">
+            <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-10 shadow-xl">
+              <PlusIcon size={48} className="text-[var(--color-accent)]/40" />
             </div>
-            <h2 className="text-3xl font-black mb-4" style={{ fontFamily: 'var(--font-heading)' }}>No pages yet</h2>
-            <p className="opacity-50 mb-10 max-w-sm mx-auto">Create your first themed page and publish it to the world in minutes.</p>
+            <h3 className="text-3xl font-black mb-4">No Vibes Found</h3>
+            <p className="opacity-50 mb-10 max-w-sm mx-auto text-lg">Your design playground is waiting. Create your first themed mini-site in seconds.</p>
             <button 
               onClick={() => setShowModal(true)}
-              className="px-8 py-4 bg-[var(--color-accent)] text-[var(--color-bg)] font-black rounded-[var(--radius)] hover:scale-105 transition-transform"
+              className="px-10 py-5 bg-[var(--color-accent)] text-[var(--color-bg)] font-black rounded-[var(--radius)] hover:scale-110 active:scale-95 transition-transform shadow-2xl shadow-[var(--color-accent)]/20"
             >
-              Build your first vibe
+              Build your first Vibe
             </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pages.map((page) => (
-              <div key={page.id} className="group p-6 rounded-[var(--radius)] bg-[var(--color-surface)] border border-[var(--color-accent)]/10 hover:border-[var(--color-accent)]/30 transition-all shadow-sm hover:shadow-xl">
-                <div className="flex items-start justify-between mb-4">
+            {pages.map((page, index) => (
+              <div 
+                key={page.id} 
+                className={`group p-8 rounded-[var(--radius)] bg-[var(--color-surface)] border border-[var(--color-accent)]/5 hover-raise fade-up`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex items-start justify-between mb-8">
                   <div>
-                    <h3 className="text-xl font-bold mb-2 truncate max-w-[200px]">{page.title}</h3>
+                    <h3 className="text-2xl font-black mb-2 truncate max-w-[200px]">{page.title}</h3>
                     <div className="flex items-center gap-2">
-                      <span className={`px-2 py-0.5 text-[10px] font-black uppercase tracking-widest rounded-full ${
+                      <span className={`px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-full ${
                         page.status === 'published' ? 'bg-green-500/10 text-green-500' : 'bg-orange-500/10 text-orange-500'
                       }`}>
                         {page.status}
                       </span>
-                      <span className="text-[10px] font-bold opacity-30 uppercase tracking-widest">{page.theme} theme</span>
+                      <span className="text-[10px] font-black opacity-30 uppercase tracking-widest">{page.theme} theme</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 transition-transform duration-500">
                     <button 
                       onClick={() => handleDuplicate(page.id)}
-                      className="p-2 hover:bg-[var(--color-accent)]/10 rounded-lg transition-colors text-[var(--color-text)]"
+                      className="p-3 hover:bg-[var(--color-accent)]/10 rounded-xl transition-colors text-[var(--color-text)]"
                       title="Duplicate"
                     >
-                      <CopyIcon size={16} />
+                      <CopyIcon size={18} />
                     </button>
                     <button 
                       onClick={() => handleDelete(page.id)}
-                      className="p-2 hover:bg-red-500/10 rounded-lg transition-colors text-red-500"
+                      className="p-3 hover:bg-red-500/10 rounded-xl transition-colors text-red-500"
                       title="Delete"
                     >
-                      <TrashIcon size={16} />
+                      <TrashIcon size={18} />
                     </button>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-8 pt-6 border-t border-[var(--color-accent)]/5">
-                  <div className="text-[11px] opacity-40 font-bold uppercase tracking-widest">
+                <div className="flex items-center justify-between mt-12 pt-8 border-t border-[var(--color-accent)]/5">
+                  <div className="text-[11px] opacity-40 font-black uppercase tracking-widest">
                     {page.view_count} views • {new Date(page.created_at).toLocaleDateString()}
                   </div>
                   <button 
                     onClick={() => navigate(`/app/pages/${page.id}`)}
-                    className="flex items-center gap-2 text-sm font-black text-[var(--color-accent)] hover:underline"
+                    className="flex items-center gap-2 text-sm font-black text-[var(--color-accent)] hover:gap-4 transition-all"
                   >
                     Edit Vibe
-                    <EditIcon size={14} />
+                    <EditIcon size={16} />
                   </button>
                 </div>
               </div>

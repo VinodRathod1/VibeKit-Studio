@@ -55,9 +55,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ pageId, data }) => {
           <form onSubmit={handleSubmit} className="space-y-6 text-left">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-[var(--color-text)] opacity-50 ml-2">Name</label>
+                <label htmlFor="contact-name" className="text-[10px] font-black uppercase tracking-widest text-[var(--color-text)] opacity-50 ml-2 cursor-pointer">Name</label>
                 <input 
                   required
+                  id="contact-name"
                   type="text" 
                   value={formData.name} 
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -66,9 +67,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ pageId, data }) => {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-[var(--color-text)] opacity-50 ml-2">Email</label>
+                <label htmlFor="contact-email" className="text-[10px] font-black uppercase tracking-widest text-[var(--color-text)] opacity-50 ml-2 cursor-pointer">Email</label>
                 <input 
                   required
+                  id="contact-email"
                   type="email" 
                   value={formData.email} 
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -78,9 +80,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ pageId, data }) => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-[var(--color-text)] opacity-50 ml-2">Message</label>
+              <label htmlFor="contact-message" className="text-[10px] font-black uppercase tracking-widest text-[var(--color-text)] opacity-50 ml-2 cursor-pointer">Message</label>
               <textarea 
                 required
+                id="contact-message"
                 value={formData.message} 
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="How can I help you?"
