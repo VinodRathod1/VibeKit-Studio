@@ -53,4 +53,7 @@ export const api = {
 
   unpublishPage: (id: string) => 
     request('page-unpublish', { method: 'POST', body: JSON.stringify({ id }) }),
+
+  getPublicPage: (slug: string) => 
+    request(`public-page?slug=${slug}`, { method: 'GET' }),
 };
