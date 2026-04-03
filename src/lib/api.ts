@@ -10,9 +10,24 @@ const request = async (endpoint: string, options: RequestInit = {}) => {
     credentials: 'include',
   });
 
-  const data = await response.json();
+  let data;
+  const contentType = response.headers.get('content-type');
+  
+  if (contentType && contentType.includes('application/json')) {
+    try {
+      data = await response.json();
+    } catch (e) {
+      throw new Error('Failed to parse server response as JSON');
+    }
+  } else {
+    // If not JSON (e.g. a 404 HTML page from Vite), capture text for debugging or throw generic
+    const text = await response.text();
+    console.error('Server returned non-JSON response:', text.slice(0, 200));
+    throw new Error(`Server error: Expected JSON but received ${contentType || 'plain text'}`);
+  }
+
   if (!response.ok) {
-    throw new Error(data.error || 'Request failed');
+    throw new Error(data?.error || 'Request failed');
   }
   return data;
 };

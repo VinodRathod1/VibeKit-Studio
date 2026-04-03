@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '../icons';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -24,10 +25,13 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <button className="w-full sm:w-auto px-8 py-4 bg-[var(--color-accent)] text-[var(--color-bg)] font-black rounded-[var(--radius)] flex items-center justify-center gap-2 text-lg hover:scale-105 transition-transform">
+          <Link 
+            to="/signup"
+            className="w-full sm:w-auto px-8 py-4 bg-[var(--color-accent)] text-[var(--color-bg)] font-black rounded-[var(--radius)] flex items-center justify-center gap-2 text-lg hover:scale-105 transition-transform"
+          >
             Create your first page
             <ArrowRightIcon size={20} />
-          </button>
+          </Link>
           <a href="#how-it-works" className="w-full sm:w-auto px-8 py-4 border-2 border-[var(--color-accent)]/20 hover:border-[var(--color-accent)] text-[var(--color-accent)] font-bold rounded-[var(--radius)] text-lg transition-colors text-center">
             See examples
           </a>

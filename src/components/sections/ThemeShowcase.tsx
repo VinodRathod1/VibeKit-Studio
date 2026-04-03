@@ -1,4 +1,5 @@
 import { themes } from '../../themes/index';
+import { Link } from 'react-router-dom';
 
 const MiniPreview = ({ themeKey }: { themeKey: string }) => {
   const t = themes[themeKey];
@@ -23,7 +24,9 @@ const MiniPreview = ({ themeKey }: { themeKey: string }) => {
       <div className="w-4/5 h-2 md:h-3 rounded-full opacity-10" style={{ backgroundColor: t.colors.text }}></div>
       <div className="w-3/5 h-2 md:h-3 rounded-full opacity-10" style={{ backgroundColor: t.colors.text }}></div>
       
-      <div className="mt-4 py-2 px-4 text-[10px] font-bold text-center border-2" 
+      <Link 
+        to="/signup"
+        className="mt-4 py-3 px-4 text-[10px] font-black uppercase tracking-widest text-center border-2 hover:scale-105 active:scale-95 transition-all block"
         style={{ 
           fontFamily: t.fonts.heading,
           borderColor: t.buttonStyle === 'glow' ? 'transparent' : t.colors.accent,
@@ -33,7 +36,7 @@ const MiniPreview = ({ themeKey }: { themeKey: string }) => {
           borderRadius: t.radius || '8px'
         }}>
         Call To Action
-      </div>
+      </Link>
     </div>
   );
 };

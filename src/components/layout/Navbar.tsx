@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { LightningBoltIcon, HamburgerIcon, CloseIcon } from '../icons';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,9 +31,12 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <a href="#features" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">Features</a>
           <a href="#themes" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">Themes</a>
-          <button className="px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-bg)] text-sm font-bold rounded-[var(--radius)] hover:opacity-90 transition-opacity">
+          <Link 
+            to="/signup"
+            className="px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-bg)] text-sm font-bold rounded-[var(--radius)] hover:opacity-90 transition-opacity"
+          >
             Get Started
-          </button>
+          </Link>
         </div>
 
         <button 
@@ -49,9 +53,12 @@ const Navbar = () => {
         <div className="p-6 flex flex-col gap-4">
           <a href="#features" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Features</a>
           <a href="#themes" className="text-lg font-medium" onClick={() => setIsOpen(false)}>Themes</a>
-          <button className="w-full py-4 bg-[var(--color-accent)] text-[var(--color-bg)] font-bold rounded-[var(--radius)]">
+          <Link 
+            to="/signup"
+            className="w-full py-4 bg-[var(--color-accent)] text-[var(--color-bg)] font-bold rounded-[var(--radius)] text-center"
+          >
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

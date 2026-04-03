@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const CTABanner = () => {
   return (
     <section className="py-24 px-6 relative overflow-hidden bg-[var(--color-bg)]">
@@ -8,9 +10,12 @@ const CTABanner = () => {
         <p className="max-w-2xl mx-auto text-lg md:text-xl opacity-70 mb-12" style={{ fontFamily: 'var(--font-body)' }}>
           Join thousands of creators making beautiful, themed mini-sites without touching a single line of code.
         </p>
-        <button className="px-10 py-5 bg-[var(--color-accent)] text-[var(--color-bg)] font-black text-xl rounded-[var(--radius)] hover:scale-105 transition-all shadow-glow flex items-center gap-2 mx-auto">
+        <Link 
+          to="/signup"
+          className="px-10 py-5 bg-[var(--color-accent)] text-[var(--color-bg)] font-black text-xl rounded-[var(--radius)] hover:scale-105 active:scale-95 transition-all shadow-glow flex items-center gap-2 mx-auto inline-flex"
+        >
           Get Started Free
-        </button>
+        </Link>
       </div>
     </section>
   );
